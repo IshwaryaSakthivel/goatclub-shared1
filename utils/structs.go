@@ -178,7 +178,9 @@ type Plans struct {
 	BonusPoints    string `json:"bonusPoints"`
 	SavePercentage string `json:"savePercentage"`
 }
-
+type CheckPickResp struct {
+	IsPickExist bool `json:"isPickExist"`
+}
 type Avatar struct {
 	Base64string string `json:"base64"`
 }
