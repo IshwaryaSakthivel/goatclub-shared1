@@ -152,7 +152,9 @@ type Score struct {
 	Name  string `json:"name"`
 	Score string `json:"score"`
 }
-
+type UpdateAvatar struct{
+	ProfileDP string `json:"profileDp"`
+}
 type Game struct {
 	ID           string    `json:"id"`
 	SportKey     string    `json:"sport_key"`
