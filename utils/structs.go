@@ -15,13 +15,13 @@ type PaymentStruct struct {
 	Paymentfrequency string `json:"paymentFrequency"`
 }
 
-// type PaymentDetailsStruct{
-// 	Amount  		string `json:"paymentAmount"`
-// 	Currency 		string `json:"currency"`
-// 	PaymentType 	string `json:payment_method_types"`
-// 	Receipt_email 	string `json:receipt_email"`
-// 	UserMailId 		string `json:userMailId"`
-// }
+type PaymentDetails struct{
+	Amount  		string `json:"paymentAmount"`
+	Currency 		string `json:"currency"`
+	PaymentType 	[]string `json:"paymentMethodTypes"`
+	Receipt_email 	string `json:"receiptEmail"`
+	UserMailId 		string `json:"userMailId"`
+}
 
 type UserStruct struct {
 	Username     	 string 				`json:"username"`
@@ -211,3 +211,4 @@ type OddsBySport struct {
 	DataId string `json:"dataId"`
 	Data   string `json:"data"`
 }
+
