@@ -16,9 +16,9 @@ type PaymentStruct struct {
 }
 
 type PaymentDetails struct{
-	Amount  		string `json:"paymentAmount"`
+	Amount  		string `json:"amount"`
 	Currency 		string `json:"currency"`
-	PaymentType 	[]string `json:"paymentMethodTypes"`
+	PaymentType 	[]string `json:"payment_method_types"`
 	Receipt_email 	string `json:"receiptEmail"`
 	UserMailId 		string `json:"userMailId"`
 }
@@ -35,6 +35,7 @@ type UserStruct struct {
 	SportPreference []string               `json:"sportPreference"`
 	MyGoats         []string               `json:"myGoats"`
 	MyFans          []string               `json:"myFans"`
+	Following		[]string				`json:"following"`
 	UserStatus      string                 `json:"userStatus"`
 	CreatedDate     time.Time              `json:"createdDate,omitempty"`
 	//Rank			  string			   `json:"rank"`
@@ -43,9 +44,9 @@ type UserStruct struct {
 type UserDetailsStruct struct {
     AccountBalance    string                 `json:"accountBalance"`
     IsProUser     	  string                 `json:"isProUser"`
-    PointsEarned      string                 `json:"pointsEarned"`
+    PointsEarned      int                 	`json:"pointsEarned"`
     ProfileDP         string                 `json:"profileDP"`
-	Rank			  string				 `json:"rank"`
+	Rank			  int				 	`json:"rank"`
 	WinningUnits      int    				`json:"winningUnits"`
 	WinningPercentage int   				 `json:"winningPercentage"`
 	Last30DaysWU      int   				 `json:"last30DaysWU"`
@@ -53,6 +54,18 @@ type UserDetailsStruct struct {
 	Loss              int    				`json:"loss"`
 }
 
+type ProfileStruct struct{
+	Username     	 string 				`json:"displayName"`
+	Guid         	 string 				`json:"personGUID,omitempty"`
+	ProfileDP         string                 `json:"avatarUrl"`
+	UserStatus      string                 `json:"goatStatus"`
+	WinningUnits      int    				`json:"winningUnits"`
+	FollowersCount    int               	`json:"followersCount"`
+	WinningPercentage int   				 `json:"winPercentage"`
+	Last30DaysWU      int   				 `json:"last30DaysPoints"`
+	Win               int    				`json:"win"`
+	Loss              int    				`json:"loss"`
+}
 type ChatStruct struct {
 	MessageParentId		string			`json:"messageParentId"`
 	PersonsGUID			string			`json:"personsGUID"`
