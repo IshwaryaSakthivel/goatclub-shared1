@@ -182,8 +182,9 @@ type Game struct {
 
 type Pricing struct {
 	Code   string `json:"code"`
-	Points string `json:"points"`
-	Price  string `json:"price"`
+	Points int `json:"points"`
+	Price  int `json:"price"`
+	PricePerDay int `json:"pricePerDay"`
 }
 
 type Plans struct {
