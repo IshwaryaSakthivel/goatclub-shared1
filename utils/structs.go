@@ -19,7 +19,7 @@ type PaymentDetails struct{
 	Amount  		string `json:"amount"`
 	Currency 		string `json:"currency"`
 	PaymentType 	[]string `json:"payment_method_types"`
-	Receipt_email 	string `json:"receiptEmail"`
+	ReceiptEmail 	string `json:"receiptEmail"`
 	UserMailId 		string `json:"userMailId"`
 }
 
@@ -182,9 +182,9 @@ type Game struct {
 
 type Pricing struct {
 	Code   string `json:"code"`
-	Points int `json:"points"`
-	Price  int `json:"price"`
-	PricePerDay int `json:"pricePerDay"`
+	Points string `json:"points"`
+	Price  string `json:"price"`
+	PricePerDay string `json:"pricePerDay"`
 }
 
 type Plans struct {
