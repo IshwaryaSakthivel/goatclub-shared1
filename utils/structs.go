@@ -138,7 +138,20 @@ type AwsPick struct {
 	Picks           []AwsPickItem `json:"picks.L"`
 	PickType        string        `json:"picktype.S"`
 }
-
+type PaymentDetailsApi struct {
+    Amount                    *int64                                   `json:"amount"`
+    Currency                  *string                                  `json:"currency"`
+    PaymentMethodTypes        []*string                                `json:"payment_method_types"`
+    ReceiptEmail              *string                                  `json:"receipt_email"`
+    SetupFutureUsage          *string                                  `json:"setup_future_usage"`
+    // PaymentMethodOptions      *PaymentIntentPaymentMethodOptionsParams `json:"payment_method_options"`
+    
+}
+//  type PaymentIntentPaymentMethodOptionsCardInstallments struct {
+//     // AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
+//     Enabled        bool                                                     `json:"enabled"`
+//     // Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
+// }
 type AwsPickItem struct {
 	EventId          string `json:"eventId.S"`
 	OddDataMoneyLine int    `json:"oddDataMoneyLine.N"`
