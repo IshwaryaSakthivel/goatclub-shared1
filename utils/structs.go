@@ -16,7 +16,7 @@ type PaymentStruct struct {
 }
 
 type PaymentDetails struct{
-	Amount  		string `json:"amount"`
+	Amount  		int64 `json:"amount"`
 	Currency 		string `json:"currency"`
 	PaymentType 	[]string `json:"payment_method_types"`
 	ReceiptEmail 	string `json:"receiptEmail"`
