@@ -16,7 +16,7 @@ type PaymentStruct struct {
 }
 
 type PaymentDetails struct{
-	Amount  		int64 `json:"amount"`
+	Amount  		string `json:"amount"`
 	Currency 		string `json:"currency"`
 	PaymentType 	[]string `json:"payment_method_types"`
 	ReceiptEmail 	string `json:"receiptEmail"`
@@ -36,7 +36,6 @@ type UserStruct struct {
 	MyGoats         []string               `json:"myGoats"`
 	MyFans          []string               `json:"myFans"`
 	Following		[]string				`json:"following"`
-	UserStatus      string                 `json:"userStatus"`
 	CreatedDate     time.Time              `json:"createdDate,omitempty"`
 	//Rank			  string			   `json:"rank"`
 }
@@ -44,9 +43,8 @@ type UserStruct struct {
 type UserDetailsStruct struct {
     AccountBalance    string                 `json:"accountBalance"`
     IsProUser     	  string                 `json:"isProUser"`
-    PointsEarned      int                 	`json:"pointsEarned"`
-    ProfileDP         string                 `json:"profileDP"`
-	Rank			  int				 	`json:"rank"`
+    TotalPoints       int                 	`json:"totalPoints"`
+    ProfileAvatarUrl         string          `json:"profileAvatarUrl"`
 	WinningUnits      int    				`json:"winningUnits"`
 	WinningPercentage int   				 `json:"winningPercentage"`
 	Last30DaysWU      int   				 `json:"last30DaysWU"`
