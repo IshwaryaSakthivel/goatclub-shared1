@@ -50,6 +50,12 @@ type UserDetailsStruct struct {
 	Last30DaysWU      int   				 `json:"last30DaysWU"`
 	Win               int    				`json:"win"`
 	Loss              int    				`json:"loss"`
+	GoatStatusCode    string				`json:"goatStatusCode"`
+    IsEmailNotificationOpted bool			`json:"isEmailNotificationOpted"`	
+    ProSubscriptionPlan  string				`json:"proSubscriptionPlan"`
+    ProSubscriptionExpiredOn time.Time		`json:"proSubscriptionExpiredOn"`
+    IsFreeTrialExpired    bool  			`json:"isFreeTrialExpired"`
+    FreeTrialExpireOn	  time.Time			`json:"freeTrialExpireOn"`
 }
 
 type ProfileStruct struct{
