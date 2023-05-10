@@ -37,6 +37,11 @@ type UserStruct struct {
 	MyFans          []string               `json:"myFans"`
 	Following		[]string				`json:"following"`
 	CreatedDate     time.Time              `json:"createdDate,omitempty"`
+	WinningUnits      int    				`json:"winningUnits"`
+	WinningPercentage int   				 `json:"winningPercentage"`
+	Last30DaysWU      int   				 `json:"last30DaysWU"`
+	Win               int    				`json:"win"`
+	Loss              int    				`json:"loss"`
 	//Rank			  string			   `json:"rank"`
 }
 
