@@ -11,16 +11,17 @@ type PaymentDetails struct {
 	UserId                       string    `json:"userId"`
 	PaymentAmount                string    `json:"paymentAmount"`
 	Plan                         string    `json:"plan"`
-	IsFreeTrialExpired           bool      `json:"isFreeTrialExpired"`
+	IsUserFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	TransactionType              string    `json:"transactionType"`
 	ProSubscriptionCreated       time.Time `json:"proSubscriptionCreated"`
 	ProSubscriptionExpiredOn     time.Time `json:"proSubscriptionExpiredOn"`
 	SubscriptionPaymentfrequency string    `json:"paymentFrequency"`
 	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
-	SubscriptionStatus      string    `json:"subscriptionStatus"`
-	SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
+	// SubscriptionStatus      string    `json:"subscriptionStatus"`
+	// SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
 	TotalPoints             int       `json:"totalPoints"`
-	Points                  int       `json:"Points"`
+	Points                  int       `json:"points"`
+	IsAutoPayEnrolled       bool      `json:"isAutoPayEnrolled"`
 }
 
 type PaymentStripe struct {
