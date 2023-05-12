@@ -4,39 +4,63 @@ import (
 	//"internal/syscall/windows"
 	"time"
 	// "github.com/aws/aws-sdk-go/service/codebuild"
-	
 )
 
-type PaymentStruct struct {
-	PaymentId        string `json:"paymentId,omitempty"`
-	UserId           string `json:"userId"`
-	PaymentAmount    string `json:"paymentAmount"`
-	TransactionType  string `json:"transactionType"`
-	Paymentfrequency string `json:"paymentFrequency"`
+type PaymentDetails struct {
+	PaymentId                    string    `json:"paymentId,omitempty"`
+	UserId                       string    `json:"userId"`
+	PaymentAmount                string    `json:"paymentAmount"`
+	Plan                         string    `json:"plan"`
+	IsFreeTrialExpired           bool      `json:"isFreeTrialExpired"`
+	TransactionType              string    `json:"transactionType"`
+	ProSubscriptionCreated       time.Time `json:"proSubscriptionCreated"`
+	ProSubscriptionExpiredOn     time.Time `json:"proSubscriptionExpiredOn"`
+	SubscriptionPaymentfrequency string    `json:"paymentFrequency"`
+	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
+	SubscriptionStatus      string    `json:"subscriptionStatus"`
+	SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
+	TotalPoints             int       `json:"totalPoints"`
+	Points                  int       `json:"Points"`
 }
 
-type PaymentDetails struct{
-	Amount  		string `json:"amount"`
-	Currency 		string `json:"currency"`
-	PaymentType 	[]string `json:"payment_method_types"`
-	ReceiptEmail 	string `json:"receiptEmail"`
-	UserMailId 		string `json:"userMailId"`
+type PaymentStripe struct {
+	Amount       string   `json:"amount"`
+	Currency     string   `json:"currency"`
+	PaymentType  []string `json:"payment_method_types"`
+	ReceiptEmail string   `json:"receiptEmail"`
+	UserMailId   string   `json:"userMailId"`
+}
+
+type PaymentIntentParams struct {
+	Amount          int64    `json:"amount"`
+	Currency        string   `json:"currency"`
+	CustomerId      string   `json:"customer_id"`
+	PaymentMethodId string   `json:"payment_method_id"`
+	Status          []string `json:"status"`
+	ReceiptEmail    string   `json:"receipt_email"`
+	PaymentIntentId string   `json:"payment_intent_id"`
+	//SetupFutureUsage       string    `json:"setup_future_usage"`
+	AutomaticPaymentMethod string `json:"automatic_payment_method"`
+	// SubscriptionId         string    `json:"subscription_id"`
+	LiveMode    string    `json:"livemode"`
+	EmailId     string    `json:"emailId"`
+	CreatedDate time.Time `json:"createdDate,omitempty"`
 }
 
 type UserStruct struct {
-	Username     	 string 				`json:"username"`
-	EmailAddress 	 string 				`json:"emailAddress"`
-	Password     	 string 				`json:"password"`
-	Guid         	 string 				`json:"guid,omitempty"`
-	AccountStatus 	string 					`json:"accountStatus"`
-	MobileNumber  	string 					`json:"mobileNumber"`
-	UserDetails    UserDetailsStruct       `json:"userDetails"`
+	Username      string            `json:"username"`
+	EmailAddress  string            `json:"emailAddress"`
+	Password      string            `json:"password"`
+	Guid          string            `json:"guid,omitempty"`
+	AccountStatus string            `json:"accountStatus"`
+	MobileNumber  string            `json:"mobileNumber"`
+	UserDetails   UserDetailsStruct `json:"userDetails"`
 	//UserDetails     map[string]interface{} `json:"userDetails"`
-	SportPreference []string               `json:"sportPreference"`
-	MyGoats         []string               `json:"myGoats"`
-	MyFans          []string               `json:"myFans"`
-	Following		[]string				`json:"following"`
-	CreatedDate     time.Time              `json:"createdDate,omitempty"`
+	SportPreference []string  `json:"sportPreference"`
+	MyGoats         []string  `json:"myGoats"`
+	MyFans          []string  `json:"myFans"`
+	Following       []string  `json:"following"`
+	CreatedDate     time.Time `json:"createdDate,omitempty"`
 	// WinningUnits      int    				`json:"winningUnits"`
 	// WinningPercentage int   				 `json:"winningPercentage"`
 	// Last30DaysWU      int   				 `json:"last30DaysWU"`
@@ -46,71 +70,71 @@ type UserStruct struct {
 }
 
 type UserDetailsStruct struct {
-    AccountBalance    string                 `json:"accountBalance"`
-    IsProUser     	  bool                 `json:"isProUser"`
-    TotalPoints       int                 	`json:"totalPoints"`
-    ProfileAvatarUrl         string          `json:"profileAvatarUrl"`
-	WinningUnits      int    				`json:"winningUnits"`
-	WinningPercentage int   				 `json:"winningPercentage"`
-	Last30DaysWU      int   				 `json:"last30DaysWU"`
-	Win               int    				`json:"win"`
-	Loss              int    				`json:"loss"`
-	GoatStatusCode    string				`json:"goatStatusCode"`
-    IsEmailNotificationOpted bool			`json:"isEmailNotificationOpted"`	
-    ProSubscriptionPlan  string				`json:"proSubscriptionPlan"`
-    ProSubscriptionExpiredOn time.Time		`json:"proSubscriptionExpiredOn"`
-    IsFreeTrialExpired    bool  			`json:"isFreeTrialExpired"`
-    FreeTrialExpireOn	  time.Time			`json:"freeTrialExpireOn"`
+	AccountBalance           string    `json:"accountBalance"`
+	IsProUser                bool      `json:"isProUser"`
+	TotalPoints              int       `json:"totalPoints"`
+	ProfileAvatarUrl         string    `json:"profileAvatarUrl"`
+	WinningUnits             int       `json:"winningUnits"`
+	WinningPercentage        int       `json:"winningPercentage"`
+	Last30DaysWU             int       `json:"last30DaysWU"`
+	Win                      int       `json:"win"`
+	Loss                     int       `json:"loss"`
+	GoatStatusCode           string    `json:"goatStatusCode"`
+	IsEmailNotificationOpted bool      `json:"isEmailNotificationOpted"`
+	ProSubscriptionPlan      string    `json:"proSubscriptionPlan"`
+	ProSubscriptionExpiredOn time.Time `json:"proSubscriptionExpiredOn"`
+	IsFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
+	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
 }
 
-type ProfileStruct struct{
-	Username     	 string 				`json:"displayName"`
-	Guid         	 string 				`json:"personGUID,omitempty"`
-	ProfileDP         string                 `json:"avatarUrl"`
-	UserStatus      string                 `json:"goatStatus"`
-	WinningUnits      int    				`json:"winningUnits"`
-	FollowersCount    int               	`json:"followersCount"`
-	WinningPercentage int   				 `json:"winPercentage"`
-	Last30DaysWU      int   				 `json:"last30DaysPoints"`
-	Win               int    				`json:"win"`
-	Loss              int    				`json:"loss"`
+type ProfileStruct struct {
+	Username          string `json:"displayName"`
+	Guid              string `json:"personGUID,omitempty"`
+	ProfileDP         string `json:"avatarUrl"`
+	UserStatus        string `json:"goatStatus"`
+	WinningUnits      int    `json:"winningUnits"`
+	FollowersCount    int    `json:"followersCount"`
+	WinningPercentage int    `json:"winPercentage"`
+	Last30DaysWU      int    `json:"last30DaysPoints"`
+	Win               int    `json:"win"`
+	Loss              int    `json:"loss"`
 }
 type ChatStruct struct {
-	MessageParentId		string			`json:"messageParentId"`
-	PersonsGUID			string			`json:"personsGUID"`
-	ChatId      		string          `json:"chatId"`
-	RoomName    		string          `json:"roomName"`
-	Message				string			`json:"message"`
-	DisplayName			string			`json:"displayName"`
-	UserId				string			`json:"userId"`
-	AvatarUrl			string			`json:"avatarUrl"`
-	RankLevelCode		string			`json:"rankLevelCode"`
-	TimeStamp			time.Time		`json:"timeStamp"`
-	LikesCount			string			`json:"likesCount"`
-	CommentsCount		string			`json:"commentsCount"`
-	UpdateMode			string			`json:"updateMode"`
-	ReceiverGUID		string			`json:"receiverGUID"`
-	SenderGUID			string			`json:"senderGUID"`
-	CreatedDate 		time.Time       `json:"createdDate,omitempty"`
+	MessageParentId string    `json:"messageParentId"`
+	PersonsGUID     string    `json:"personsGUID"`
+	ChatId          string    `json:"chatId"`
+	RoomName        string    `json:"roomName"`
+	Message         string    `json:"message"`
+	DisplayName     string    `json:"displayName"`
+	UserId          string    `json:"userId"`
+	AvatarUrl       string    `json:"avatarUrl"`
+	RankLevelCode   string    `json:"rankLevelCode"`
+	TimeStamp       time.Time `json:"timeStamp"`
+	LikesCount      string    `json:"likesCount"`
+	CommentsCount   string    `json:"commentsCount"`
+	UpdateMode      string    `json:"updateMode"`
+	ReceiverGUID    string    `json:"receiverGUID"`
+	SenderGUID      string    `json:"senderGUID"`
+	CreatedDate     time.Time `json:"createdDate,omitempty"`
 }
 
 type PvtChatStruct struct {
-	MessageParentId		string			`json:"messageParentId"`
-	PersonsGUID			string			`json:"personsGUID"`
-	ChatId      		string          `json:"chatId"`
-	RoomName    		string          `json:"roomName"`
-	Message				string			`json:"message"`
-	DisplayName			string			`json:"displayName"`
-	UserId				string			`json:"userId"`
-	AvatarUrl			string			`json:"avatarUrl"`
-	RankLevelCode		string			`json:"rankLevelCode"`
-	TimeStamp			time.Time		`json:"timeStamp"`
-	LikesCount			string			`json:"likesCount"`
-	CommentsCount		string			`json:"commentsCount"`
-	UpdateMode			string			`json:"updateMode"`
-	ReceiverGUID		string			`json:"receiverGUID"`
-	SenderGUID			string			`json:"senderGUID"`
-	CreatedDate 		time.Time       `json:"createdDate,omitempty"`
+	MessageParentId string    `json:"messageParentId"`
+	PersonsGUID     string    `json:"personsGUID"`
+	ChatId          string    `json:"chatId"`
+	RoomName        string    `json:"roomName"`
+	Message         string    `json:"message"`
+	DisplayName     string    `json:"displayName"`
+	UserId          string    `json:"userId"`
+	AvatarUrl       string    `json:"avatarUrl"`
+	RankLevelCode   string    `json:"rankLevelCode"`
+	TimeStamp       time.Time `json:"timeStamp"`
+	LikesCount      string    `json:"likesCount"`
+	CommentsCount   string    `json:"commentsCount"`
+	UpdateMode      string    `json:"updateMode"`
+	ReceiverGUID    string    `json:"receiverGUID"`
+	SenderGUID      string    `json:"senderGUID"`
+	CreatedDate     time.Time `json:"createdDate,omitempty"`
 }
 
 type PickStruct struct {
@@ -131,11 +155,11 @@ type PickDetails struct {
 	PickCreatedDate time.Time `json:"pickCreatedDate,omitempty"`
 }
 type Picks struct {
-	EventId          string		 `json:"eventId"`
-	TeamName         string		 `json:"teamName"`
-	OppTeamName		 string		`json:"oppTeamName"`
-	Sport            string 	`json:"sport"`
-	OddDataMoneyLine int    	`json:"oddDataMoneyLine"`
+	EventId          string `json:"eventId"`
+	TeamName         string `json:"teamName"`
+	OppTeamName      string `json:"oppTeamName"`
+	Sport            string `json:"sport"`
+	OddDataMoneyLine int    `json:"oddDataMoneyLine"`
 }
 type AwsPick struct {
 	GameStatus      bool          `json:"gamestatus.NULL"`
@@ -148,19 +172,20 @@ type AwsPick struct {
 	PickType        string        `json:"picktype.S"`
 }
 type PaymentDetailsApi struct {
-    Amount                    *int64                                   `json:"amount"`
-    Currency                  *string                                  `json:"currency"`
-    PaymentMethodTypes        []*string                                `json:"payment_method_types"`
-    ReceiptEmail              *string                                  `json:"receipt_email"`
-    SetupFutureUsage          *string                                  `json:"setup_future_usage"`
-    // PaymentMethodOptions      *PaymentIntentPaymentMethodOptionsParams `json:"payment_method_options"`
-    
+	Amount             *int64    `json:"amount"`
+	Currency           *string   `json:"currency"`
+	PaymentMethodTypes []*string `json:"payment_method_types"`
+	ReceiptEmail       *string   `json:"receipt_email"`
+	SetupFutureUsage   *string   `json:"setup_future_usage"`
+	// PaymentMethodOptions      *PaymentIntentPaymentMethodOptionsParams `json:"payment_method_options"`
+
 }
-//  type PaymentIntentPaymentMethodOptionsCardInstallments struct {
-//     // AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
-//     Enabled        bool                                                     `json:"enabled"`
-//     // Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
-// }
+
+//	 type PaymentIntentPaymentMethodOptionsCardInstallments struct {
+//	    // AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
+//	    Enabled        bool                                                     `json:"enabled"`
+//	    // Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
+//	}
 type AwsPickItem struct {
 	EventId          string `json:"eventId.S"`
 	OddDataMoneyLine int    `json:"oddDataMoneyLine.N"`
@@ -187,7 +212,7 @@ type Score struct {
 	Name  string `json:"name"`
 	Score string `json:"score"`
 }
-type UpdateAvatar struct{
+type UpdateAvatar struct {
 	ProfileDP string `json:"profileDp"`
 }
 type Game struct {
@@ -203,9 +228,9 @@ type Game struct {
 }
 
 type Pricing struct {
-	Code   string `json:"code"`
-	Points string `json:"points"`
-	Price  string `json:"price"`
+	Code        string `json:"code"`
+	Points      string `json:"points"`
+	Price       string `json:"price"`
 	PricePerDay string `json:"pricePerDay"`
 }
 
@@ -247,4 +272,3 @@ type OddsBySport struct {
 	DataId string `json:"dataId"`
 	Data   string `json:"data"`
 }
-
