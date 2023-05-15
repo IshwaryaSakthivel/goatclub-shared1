@@ -20,6 +20,7 @@ type PaymentDetails struct {
 	// SubscriptionStatus      string    `json:"subscriptionStatus"`
 	// SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
 	TotalPoints             int       `json:"totalPoints"`
+	Currency 				string	  `json:"currency"`
 	Points                  int       `json:"points"`
 	IsAutoPayEnrolled       bool      `json:"isAutoPayEnrolled"`
 }
