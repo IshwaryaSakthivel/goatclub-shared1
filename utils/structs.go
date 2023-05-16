@@ -19,10 +19,10 @@ type PaymentDetails struct {
 	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
 	// SubscriptionStatus      string    `json:"subscriptionStatus"`
 	// SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
-	TotalPoints             int       `json:"totalPoints"`
-	Currency 				string	  `json:"currency"`
-	Points                  int       `json:"points"`
-	IsAutoPayEnrolled       bool      `json:"isAutoPayEnrolled"`
+	TotalPoints       int    `json:"totalPoints"`
+	Currency          string `json:"currency"`
+	Points            int    `json:"points"`
+	IsAutoPayEnrolled bool   `json:"isAutoPayEnrolled"`
 }
 
 type PaymentStripe struct {
@@ -77,7 +77,7 @@ type UserDetailsStruct struct {
 	IsProUser                bool      `json:"isProUser"`
 	TotalPoints              int       `json:"totalPoints"`
 	ProfileAvatarUrl         string    `json:"profileAvatarUrl"`
-	AvatarUrl				string		`json:"avatarUrl"`
+	AvatarUrl                string    `json:"avatarUrl"`
 	WinningUnits             int       `json:"winningUnits"`
 	WinningPercentage        int       `json:"winningPercentage"`
 	Last30DaysWU             int       `json:"last30DaysWU"`
@@ -252,13 +252,16 @@ type Avatar struct {
 	Base64string string `json:"base64"`
 }
 type Statistics struct {
-	PickerId   string         `json:"pickerId,omitempty"`
-	Summary    PickStatistics `json:"summary"`
-	Yesterday  PickStatistics `json:"yesterday"`
-	Last7Days  PickStatistics `json:"last7Days"`
-	Last30Days PickStatistics `json:"last30Days"`
-	Last60Days PickStatistics `json:"last60Days"`
-	UpdateDate time.Time      `json:"updateDate"`
+	PickerId      string         `json:"pickerId,omitempty"`
+	Summary       PickStatistics `json:"summary"`
+	NBASummary    PickStatistics `json:"nbasummary"`
+	MLBSummary    PickStatistics `json:"mlbsummary"`
+	TennisSummary PickStatistics `json:"tennissummary"`
+	Yesterday     PickStatistics `json:"yesterday"`
+	Last7Days     PickStatistics `json:"last7Days"`
+	Last30Days    PickStatistics `json:"last30Days"`
+	Last60Days    PickStatistics `json:"last60Days"`
+	UpdateDate    time.Time      `json:"updateDate"`
 }
 
 type PickStatistics struct {
