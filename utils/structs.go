@@ -276,7 +276,7 @@ type NotificationsStack struct {
 	NotificationType    string    `json:"notificationType"`
 	UserId              string    `json:"userId"`
 	CreatedDate         time.Time `json:"createdDate"`
-	TeamsPicked         string    `json:"teamsPicked"`
+	TeamsPicked         []string  `json:"teamsPicked"`
 	NotificationMessage string    `json:"notificationMessage"`
 }
 type UserNotificationsActivities struct {
