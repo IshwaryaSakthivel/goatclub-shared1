@@ -8,7 +8,7 @@ import (
 
 type PaymentDetails struct {
 	PaymentId                    string    `json:"paymentId,omitempty"`
-	StripePaymentId				string		`json:"stripePaymentId"`
+	StripePaymentId              string    `json:"stripePaymentId"`
 	UserId                       string    `json:"userId"`
 	PaymentAmount                string    `json:"paymentAmount"`
 	Plan                         string    `json:"plan"`
@@ -270,4 +270,20 @@ type PickStatistics struct {
 type OddsBySport struct {
 	DataId string `json:"dataId"`
 	Data   string `json:"data"`
+}
+type NotificationsStack struct {
+	NotificationId      string    `json:"notificationId"`
+	NotificationType    string    `json:"notificationType"`
+	UserId              string    `json:"userId"`
+	CreatedDate         time.Time `json:"createdDate"`
+	TeamsPicked         string    `json:"teamsPicked"`
+	NotificationMessage string    `json:"notificationMessage"`
+}
+type UserNotificationsActivities struct {
+	NotificationId string    `json:"notificationId"`
+	Seen           bool      `json:"seen"`
+	SourceGuid     string    `json:"sourceGuid"`
+	CreatedDate    time.Time `json:"createdDate"`
+	SeenDate       time.Time `json:"seenDate"`
+	SubscriberGuid string    `json:"subscriberGuid"`
 }
