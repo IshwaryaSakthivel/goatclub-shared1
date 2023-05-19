@@ -8,6 +8,7 @@ import (
 
 type PaymentDetails struct {
 	PaymentId                    string    `json:"paymentId,omitempty"`
+	StripePaymentId				string		`json:"stripePaymentId"`
 	UserId                       string    `json:"userId"`
 	PaymentAmount                string    `json:"paymentAmount"`
 	Plan                         string    `json:"plan"`
@@ -50,29 +51,20 @@ type PaymentIntentParams struct {
 }
 
 type UserStruct struct {
-	Username      string            `json:"username"`
-	EmailAddress  string            `json:"emailAddress"`
-	Password      string            `json:"password"`
-	Guid          string            `json:"guid,omitempty"`
-	AccountStatus string            `json:"accountStatus"`
-	MobileNumber  string            `json:"mobileNumber"`
-	UserDetails   UserDetailsStruct `json:"userDetails"`
+	Username      string `json:"username"`
+	EmailAddress  string `json:"emailAddress"`
+	Password      string `json:"password"`
+	Guid          string `json:"guid,omitempty"`
+	AccountStatus string `json:"accountStatus"`
+	MobileNumber  string `json:"mobileNumber"`
+	//UserDetails   UserDetailsStruct `json:"userDetails"`
 	//UserDetails     map[string]interface{} `json:"userDetails"`
-	SportPreference []string  `json:"sportPreference"`
-	MyGoats         []string  `json:"myGoats"`
-	MyFans          []string  `json:"myFans"`
-	Following       []string  `json:"following"`
-	CreatedDate     time.Time `json:"createdDate,omitempty"`
-
-	// WinningUnits      int    				`json:"winningUnits"`
-	// WinningPercentage int   				 `json:"winningPercentage"`
-	// Last30DaysWU      int   				 `json:"last30DaysWU"`
-	// Win               int    				`json:"win"`
-	// Loss              int    				`json:"loss"`
-	//Rank			  string			   `json:"rank"`
-}
-
-type UserDetailsStruct struct {
+	SportPreference          []string  `json:"sportPreference"`
+	MyGoats                  []string  `json:"myGoats"`
+	MyFans                   []string  `json:"myFans"`
+	Following                []string  `json:"following"`
+	CreatedDate              time.Time `json:"createdDate,omitempty"`
+	Sort                     int       `json:"sort"`
 	AccountBalance           string    `json:"accountBalance"`
 	IsProUser                bool      `json:"isProUser"`
 	TotalPoints              int       `json:"totalPoints"`
