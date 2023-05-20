@@ -287,6 +287,6 @@ type UserNotificationsActivities struct {
 	SeenDate       time.Time `json:"seenDate"`
 	SubscriberGuid string    `json:"subscriberGuid"`
 }
-type websocket struct {
+type Websocket struct {
 	ConnectionId string `json:"connectionId"`
 }
