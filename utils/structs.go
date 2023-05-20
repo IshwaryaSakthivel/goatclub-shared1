@@ -271,6 +271,10 @@ type OddsBySport struct {
 	DataId string  `json:"dataId"`
 	Data   []Event `json:"data"`
 }
+type StaticData struct {
+	DataId string `json:"dataId"`
+	Data   string `json:"data"`
+}
 type Outcome struct {
 	Name  string  `json:"name"`
 	Price float64 `json:"price"`
