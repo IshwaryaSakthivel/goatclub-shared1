@@ -244,16 +244,28 @@ type Avatar struct {
 	Base64string string `json:"base64"`
 }
 type Statistics struct {
-	PickerId      string         `json:"pickerId,omitempty"`
-	Summary       PickStatistics `json:"summary"`
-	NBASummary    PickStatistics `json:"nbasummary"`
-	MLBSummary    PickStatistics `json:"mlbsummary"`
-	TennisSummary PickStatistics `json:"tennissummary"`
-	Yesterday     PickStatistics `json:"yesterday"`
-	Last7Days     PickStatistics `json:"last7Days"`
-	Last30Days    PickStatistics `json:"last30Days"`
-	Last60Days    PickStatistics `json:"last60Days"`
-	UpdateDate    time.Time      `json:"updateDate"`
+	PickerId         string         `json:"pickerId,omitempty"`
+	Summary          PickStatistics `json:"summary"`
+	NBASummary       PickStatistics `json:"nbasummary"`
+	MLBSummary       PickStatistics `json:"mlbsummary"`
+	TennisSummary    PickStatistics `json:"tennissummary"`
+	Yesterday        PickStatistics `json:"yesterday"`
+	NBAYesterday     PickStatistics `json:"nbayesterday"`
+	MLBYesterday     PickStatistics `json:"mlbyesterday"`
+	TennisYesterday  PickStatistics `json:"tennisyesterday"`
+	Last7Days        PickStatistics `json:"last7Days"`
+	NBALast7Days     PickStatistics `json:"nbalast7Days"`
+	MLBLast7Days     PickStatistics `json:"mlblast7Days"`
+	TennisLast7Days  PickStatistics `json:"tennislast7Days"`
+	Last30Days       PickStatistics `json:"last30Days"`
+	NBALast30Days    PickStatistics `json:"nbalast30Days"`
+	MLBLast30Days    PickStatistics `json:"mlblast30Days"`
+	TennisLast30Days PickStatistics `json:"tennislast30Days"`
+	Last60Days       PickStatistics `json:"last60Days"`
+	NBALast60Days    PickStatistics `json:"nbalast60Days"`
+	MLBLast60Days    PickStatistics `json:"mlblast60Days"`
+	TennisLast60Days PickStatistics `json:"tennislast60Days"`
+	UpdateDate       time.Time      `json:"updateDate"`
 }
 
 type PickStatistics struct {
