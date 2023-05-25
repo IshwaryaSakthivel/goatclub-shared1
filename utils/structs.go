@@ -14,8 +14,8 @@ type PaymentDetails struct {
 	Plan                         string    `json:"plan"`
 	IsUserFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	TransactionType              string    `json:"transactionType"`
-	ProSubscriptionCreated       time.Time `json:"proSubscriptionCreated"`
-	ProSubscriptionExpiredOn     time.Time `json:"proSubscriptionExpiredOn"`
+	ProSubscriptionCreated       int64 `json:"proSubscriptionCreated"`
+	ProSubscriptionExpiredOn     int64 `json:"proSubscriptionExpiredOn"`
 	SubscriptionPaymentfrequency string    `json:"paymentFrequency"`
 	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
 	// SubscriptionStatus      string    `json:"subscriptionStatus"`
@@ -78,7 +78,7 @@ type UserStruct struct {
 	GoatStatusCode           string    `json:"goatStatusCode"`
 	IsEmailNotificationOpted bool      `json:"isEmailNotificationOpted"`
 	ProSubscriptionPlan      string    `json:"proSubscriptionPlan"`
-	ProSubscriptionExpiredOn time.Time `json:"proSubscriptionExpiredOn"`
+	ProSubscriptionExpiredOn int64 `json:"proSubscriptionExpiredOn"`
 	IsFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
 }
