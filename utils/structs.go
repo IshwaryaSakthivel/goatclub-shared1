@@ -76,6 +76,7 @@ type UserStruct struct {
 	Win                      int       `json:"win"`
 	Loss                     int       `json:"loss"`
 	GoatStatusCode           string    `json:"goatStatusCode"`
+	FollowersCount			 int		`json:"followersCount"`
 	IsEmailNotificationOpted bool      `json:"isEmailNotificationOpted"`
 	ProSubscriptionPlan      string    `json:"proSubscriptionPlan"`
 	ProSubscriptionExpiredOn int64 `json:"proSubscriptionExpiredOn"`
