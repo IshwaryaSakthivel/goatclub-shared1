@@ -14,8 +14,8 @@ type PaymentDetails struct {
 	Plan                         string    `json:"plan"`
 	IsUserFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	TransactionType              string    `json:"transactionType"`
-	ProSubscriptionCreated       int64 `json:"proSubscriptionCreated"`
-	ProSubscriptionExpiredOn     int64 `json:"proSubscriptionExpiredOn"`
+	ProSubscriptionCreated       float64 `json:"proSubscriptionCreated"`
+	ProSubscriptionExpiredOn     float64 `json:"proSubscriptionExpiredOn"`
 	SubscriptionPaymentfrequency string    `json:"paymentFrequency"`
 	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
 	// SubscriptionStatus      string    `json:"subscriptionStatus"`
