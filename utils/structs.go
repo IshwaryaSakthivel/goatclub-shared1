@@ -7,8 +7,8 @@ import (
 )
 
 type PaymentDetails struct {
-	PaymentId                    string    `json:"paymentId,omitempty"`
-	StripePaymentId              string    `json:"stripePaymentId"`
+	Id                    string    `json:"id,omitempty"`
+	//StripePaymentId              string    `json:"stripePaymentId"`
 	UserId                       string    `json:"userId"`
 	PaymentAmount                string    `json:"paymentAmount"`
 	Plan                         string    `json:"plan"`
