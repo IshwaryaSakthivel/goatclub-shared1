@@ -7,16 +7,16 @@ import (
 )
 
 type PaymentDetails struct {
-	Id                    string    `json:"id,omitempty"`
+	Id string `json:"id,omitempty"`
 	//StripePaymentId              string    `json:"stripePaymentId"`
-	UserId                       string    `json:"userId"`
-	PaymentAmount                string    `json:"paymentAmount"`
-	Plan                         string    `json:"plan"`
-	IsUserFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
-	TransactionType              string    `json:"transactionType"`
+	UserId                       string  `json:"userId"`
+	PaymentAmount                string  `json:"paymentAmount"`
+	Plan                         string  `json:"plan"`
+	IsUserFreeTrialExpired       bool    `json:"isFreeTrialExpired"`
+	TransactionType              string  `json:"transactionType"`
 	ProSubscriptionCreated       float64 `json:"proSubscriptionCreated"`
 	ProSubscriptionExpiredOn     float64 `json:"proSubscriptionExpiredOn"`
-	SubscriptionPaymentfrequency string    `json:"paymentFrequency"`
+	SubscriptionPaymentfrequency string  `json:"paymentFrequency"`
 	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
 	// SubscriptionStatus      string    `json:"subscriptionStatus"`
 	// SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
@@ -71,30 +71,30 @@ type UserStruct struct {
 	ProfileAvatarUrl         string    `json:"profileAvatarUrl"`
 	AvatarUrl                string    `json:"avatarUrl"`
 	WinningUnits             int       `json:"winningUnits"`
-	WinningPercentage        int       `json:"winningPercentage"`
+	WinningPercentage        float64   `json:"winningPercentage"`
 	Last30DaysWU             int       `json:"last30DaysWU"`
 	Win                      int       `json:"win"`
 	Loss                     int       `json:"loss"`
 	GoatStatusCode           string    `json:"goatStatusCode"`
-	FollowersCount			 int		`json:"followersCount"`
+	FollowersCount           int       `json:"followersCount"`
 	IsEmailNotificationOpted bool      `json:"isEmailNotificationOpted"`
 	ProSubscriptionPlan      string    `json:"proSubscriptionPlan"`
-	ProSubscriptionExpiredOn int64 `json:"proSubscriptionExpiredOn"`
+	ProSubscriptionExpiredOn int64     `json:"proSubscriptionExpiredOn"`
 	IsFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
 }
 
 type ProfileStruct struct {
-	Username          string `json:"displayName"`
-	Guid              string `json:"personGUID,omitempty"`
-	ProfileDP         string `json:"avatarUrl"`
-	UserStatus        string `json:"goatStatus"`
-	WinningUnits      int    `json:"winningUnits"`
-	FollowersCount    int    `json:"followersCount"`
-	WinningPercentage int    `json:"winPercentage"`
-	Last30DaysWU      int    `json:"last30DaysPoints"`
-	Win               int    `json:"win"`
-	Loss              int    `json:"loss"`
+	Username          string  `json:"displayName"`
+	Guid              string  `json:"personGUID,omitempty"`
+	ProfileDP         string  `json:"avatarUrl"`
+	UserStatus        string  `json:"goatStatus"`
+	WinningUnits      int     `json:"winningUnits"`
+	FollowersCount    int     `json:"followersCount"`
+	WinningPercentage float64 `json:"winPercentage"`
+	Last30DaysWU      int     `json:"last30DaysPoints"`
+	Win               int     `json:"win"`
+	Loss              int     `json:"loss"`
 }
 type ChatStruct struct {
 	MessageParentId string    `json:"messageParentId"`
@@ -270,14 +270,14 @@ type Statistics struct {
 }
 
 type PickStatistics struct {
-	Followers         int    `json:"followers"`
-	PicksCount        int    `json:"picksCount"`
-	WinningUnits      int    `json:"winningUnits"`
-	WinningPercentage int    `json:"winningPercentage"`
-	Last30DaysWU      int    `json:"last30DaysWU"`
-	Win               int    `json:"win"`
-	Loss              int    `json:"loss"`
-	WinLoss           string `json:"winLoss"`
+	Followers         int     `json:"followers"`
+	PicksCount        int     `json:"picksCount"`
+	WinningUnits      int     `json:"winningUnits"`
+	WinningPercentage float64 `json:"winningPercentage"`
+	Last30DaysWU      int     `json:"last30DaysWU"`
+	Win               int     `json:"win"`
+	Loss              int     `json:"loss"`
+	WinLoss           string  `json:"winLoss"`
 }
 
 type OddsBySport struct {
