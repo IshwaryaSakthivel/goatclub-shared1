@@ -3,7 +3,6 @@ package utils
 import (
 	//"internal/syscall/windows"
 	"time"
-	// "github.com/aws/aws-sdk-go/service/codebuild"
 )
 
 type PaymentDetails struct {
@@ -167,12 +166,13 @@ type Followers struct {
 type CheckMyGoat struct {
  	IsGoatSubscribed bool `json:"isGoatSubscribed"`
 }
-type response struct {
+type Updated struct {
 	Updated string `json:"updated"`
 }
 
 type Expiry struct {
 	Expiry int64 `json:"expires_at"`
+	IsAutoPayEnrolled bool	`json:"isAutoPayEnrolled"`
 	CancelAtPeriodEnd bool `json:"cancelAtPeriodEnd"`
 }
 type Goats struct {
@@ -419,4 +419,171 @@ type UserNotificationsActivities struct {
 }
 type Websocket struct {
 	ConnectionId string `json:"connectionId"`
+}
+// Payment
+type ProductStruct struct {
+	ProductId   string  `json:"id"`
+	CreatedDate float64 `json:"created"`
+	LiveMode    bool    `json:"livemode"`
+	Active      bool    `json:"active"`
+	Name        string  `json:"name"`
+	Description string  `json:"description"`
+	UpdatedDate float64 `json:"updated"`
+}
+
+type PriceStruct struct {
+	PriceId     string  `json:"id"`
+	CreatedDate float64 `json:"created"`
+	LiveMode    bool    `json:"livemode"`
+	Active      bool    `json:"active"`
+	Name        string  `json:"nickname"`
+	ProductId   string  `json:"product"`
+	Currency    string  `json:"currency"`
+	Amount      int64   `json:"unit_amount"`
+	Type        string  `json:"type"`
+}
+
+type Response struct {
+	Message string `json:"message"`
+}
+
+type ProCancelSubscription struct {
+	UserId       string `json:"userId"`
+	Customer     string `json:"customer"`
+	Subscription string `json:"subscription"`
+}
+type GoatCancelSubscription struct {	
+	UserId       string `json:"userId"`
+	GoatGuid     string `json:"goatGuid"`
+	Customer     string `json:"customer"`
+	Subscription string `json:"subscription"`
+	Email        string `json:"email"`
+}
+type CardDetails struct {
+	UserId      string `json:"userId"`
+	UserEmail   string `json:"userEmail"`
+	CardId      string `json:"cardId"`
+	CustomerId  string `json:"customerId"`
+}
+type InsertCardDetails struct {
+	UserId      string `json:"userId"`
+	UserEmail   string `json:"userEmail"`
+	CardId      string `json:"cardId"`
+	CardNumber  string `json:"cardNumber"`
+	ExpiryYear  string `json:"expiryYear"`
+	Cvc         string `json:"cvc"`
+	ExpiryMonth string `json:"expiryMonth"`
+	CustomerId  string `json:"customerId"`
+	Name        string `json:"name"`
+}
+type ErrorMessage struct {
+	Message string `json:"message"`
+	Error 	error	`json:"error"`
+}
+type UpdateCardDetails struct {	
+	UserId      string `json:"userId"`
+	UserEmail   string `json:"userEmail"`
+	CardId      string `json:"cardId"`
+	CardNumber  string `json:"cardNumber"`
+	ExpiryYear  string `json:"expiryYear"`
+	Cvc         string `json:"cvc"`
+	ExpiryMonth string `json:"expiryMonth"`
+	CustomerId  string `json:"customerId"` 
+	Name        string `json:"name"`
+}
+type ProMappingStruct struct {
+	CustomerId string `json:"customerId"`
+	UserId     string `json:"userId"`
+	EmailId    string `json:"email"`
+	PriceId    string `json:"priceId"`
+}
+type GoatMappingStruct struct {
+	CustomerId     string    `json:"customerId"`
+	UserId         string    `json:"guid"`
+	EmailId        string    `json:"email"`
+	PriceId        string    `json:"priceId"`
+	GoatGuid       string    `json:"goatGuid"`
+	SubscriptionId string    `json:"SubscriptionId"`
+	GoatStatus     string    `json:"goatStatus"`
+	CreatedDate    time.Time `json:"createdDate,omitempty"`
+}
+type CheckoutSessionParams struct {
+	ID                           string  `json:"id"`
+	InvoicecID                   string  `json:"invoice"`
+	SubscriptionID               string  `json:"subscription"`
+	Amount                       float64 `json:"amount_total"`
+	Currency                     string  `json:"currency"`
+	CustomerId                   string  `json:"customer"`
+	PaymentStatus                string  `json:"payment_status"`
+	Status                       string  `json:"status"`
+	ReceiptEmail                 string  `json:"email"`
+	LiveMode                     bool    `json:"livemode"`
+	CreatedDate                  int64   `json:"created,omitempty"`
+	ExpiredDate                  int64   `json:"expires_at,omitempty"`
+	UserId                       string  `json:"userId"`
+	Mode                         string  `json:"mode"`
+	Name                         string  `json:"name"`
+	SubscriptionPaymentfrequency string  `json:"paymentFrequency"`
+	IsAutoPayEnrolled            bool    `json:"isAutoPayEnrolled"`
+	Active                       bool    `json:"active"`
+	CancelAtPeriodEnd            bool    `json:"cancelAtPeriodEnd"`
+	// IsUserFreeTrialExpired       bool             `json:"isFreeTrialExpired"`
+}
+type CustomerSubscription struct {
+	SubscriptionId          string `json:" id"`
+	CustomerId              string `json:"customer"`
+	SubscriptionCancelledAt string `json:"canceled_at"`
+	SubscriptionCancelAt    string `json:"cancel_at"`
+	Description             string `json:"description"`
+	CurrentPeriodEnd        string `json:"current_period_end"`
+	CurrentPeriodStart      string `json:"current_period_start"`
+	DefaultPaymentMethod    string `json:"default_payment_method"`
+	Email                   string `json:"email"`
+	GoatGuid                string `json:"goatGuid"`
+	Subscription            string `json:"SubscriptionId"`
+	UserId                  string `json:"userId"`
+	UserGuid                string `json:"guid"`
+}
+type GoatCheckoutSessionParams struct {
+	ID                           string  `json:"id"`
+	InvoicecID                   string  `json:"invoice"`
+	SubscriptionID               string  `json:"subscription"`
+	Amount                       float64 `json:"amount_total"`
+	Currency                     string  `json:"currency"`
+	CustomerId                   string  `json:"customer"`
+	PaymentStatus                string  `json:"payment_status"`
+	Status                       string  `json:"status"`
+	ReceiptEmail                 string  `json:"email"`
+	LiveMode                     bool    `json:"livemode"`
+	CreatedDate                  int64   `json:"created,omitempty"`
+	ExpiredDate                  int64   `json:"expires_at,omitempty"`
+	UserId                       string  `json:"userId"`
+	Mode                         string  `json:"mode"`
+	Name                         string  `json:"name"`
+	GoatStatus                   string  `json:"goatStatus"`
+	GoatGuid                     string  `json:"GoatGuid"`
+	SubscriptionPaymentfrequency string  `json:"paymentFrequency"`
+	IsAutoPayEnrolled            bool    `json:"isAutoPayEnrolled"`
+	Active                       bool    `json:"active"`
+	CancelAtPeriodEnd            bool    `json:"cancelAtPeriodEnd"`
+}	
+type SessionIDResponse struct {
+	SessionID  string `"json:id"`
+	PaymentUrl string `json:"url"`
+}
+type CheckoutSession struct {
+	BillingAddressCollection *string   `json:"billing_address_collection"`
+	CancelURL                *string   `json:"cancel_url"`
+	ID                       *string   `json:"id"`
+	Customer                 *string   `json:"customerId"`
+	CustomerEmail            *string   `json:"userEmail"`
+	Mode                     *string   `json:"mode"`
+	PaymentMethodTypes       []*string `json:"payment_method_types"`
+	SubmitType               *string   `json:"submit_type"`
+	SuccessURL               *string   `json:"success_url"`
+	UserId                   string    `json:"userGuid"`
+	Plan                     string    `json:"plan"`
+	PaymentAmount            string    `json:"paymentAmount"`
+	SubscriptionId           string    `json:"subscription"`
+	PriceId                  string    `json:"priceId"`
 }
