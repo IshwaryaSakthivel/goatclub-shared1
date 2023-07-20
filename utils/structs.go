@@ -131,8 +131,8 @@ type Persons struct {
 	Persons     []string  `json:"persons"`
 }
 type Guids struct {
-	UserGuid      string   `json:"userGuid"`
-	PickerGuid   string `json:"pickerGuid"`
+	UserGuid   string `json:"userGuid"`
+	PickerGuid string `json:"pickerGuid"`
 }
 type Guid struct {
 	UserGuid   string `json:"userGuid"`
@@ -154,7 +154,7 @@ type MyFans struct {
 }
 
 type MyGoats struct {
-	Guid      string   `json:"guid"`
+	Guid    string   `json:"guid"`
 	MyGoats []string `json:"myGoats"`
 }
 
@@ -164,16 +164,16 @@ type Followers struct {
 }
 
 type CheckMyGoat struct {
- 	IsGoatSubscribed bool `json:"isGoatSubscribed"`
+	IsGoatSubscribed bool `json:"isGoatSubscribed"`
 }
 type Updated struct {
 	Updated string `json:"updated"`
 }
 
 type Expiry struct {
-	Expiry int64 `json:"expires_at"`
-	IsAutoPayEnrolled bool	`json:"isAutoPayEnrolled"`
-	CancelAtPeriodEnd bool `json:"cancelAtPeriodEnd"`
+	Expiry            int64 `json:"expires_at"`
+	IsAutoPayEnrolled bool  `json:"isAutoPayEnrolled"`
+	CancelAtPeriodEnd bool  `json:"cancelAtPeriodEnd"`
 }
 type Goats struct {
 	Guid      string   `json:"guid"`
@@ -420,6 +420,7 @@ type UserNotificationsActivities struct {
 type Websocket struct {
 	ConnectionId string `json:"connectionId"`
 }
+
 // Payment
 type ProductStruct struct {
 	ProductId   string  `json:"id"`
@@ -452,7 +453,7 @@ type ProCancelSubscription struct {
 	Customer     string `json:"customer"`
 	Subscription string `json:"subscription"`
 }
-type GoatCancelSubscription struct {	
+type GoatCancelSubscription struct {
 	UserId       string `json:"userId"`
 	GoatGuid     string `json:"goatGuid"`
 	Customer     string `json:"customer"`
@@ -460,10 +461,10 @@ type GoatCancelSubscription struct {
 	Email        string `json:"email"`
 }
 type CardDetails struct {
-	UserId      string `json:"userId"`
-	UserEmail   string `json:"userEmail"`
-	CardId      string `json:"cardId"`
-	CustomerId  string `json:"customerId"`
+	UserId     string `json:"userId"`
+	UserEmail  string `json:"userEmail"`
+	CardId     string `json:"cardId"`
+	CustomerId string `json:"customerId"`
 }
 type InsertCardDetails struct {
 	UserId      string `json:"userId"`
@@ -478,9 +479,9 @@ type InsertCardDetails struct {
 }
 type ErrorMessage struct {
 	Message string `json:"message"`
-	Error 	error	`json:"error"`
+	Error   error  `json:"error"`
 }
-type UpdateCardDetails struct {	
+type UpdateCardDetails struct {
 	UserId      string `json:"userId"`
 	UserEmail   string `json:"userEmail"`
 	CardId      string `json:"cardId"`
@@ -488,7 +489,7 @@ type UpdateCardDetails struct {
 	ExpiryYear  string `json:"expiryYear"`
 	Cvc         string `json:"cvc"`
 	ExpiryMonth string `json:"expiryMonth"`
-	CustomerId  string `json:"customerId"` 
+	CustomerId  string `json:"customerId"`
 	Name        string `json:"name"`
 }
 type ProMappingStruct struct {
@@ -566,7 +567,7 @@ type GoatCheckoutSessionParams struct {
 	IsAutoPayEnrolled            bool    `json:"isAutoPayEnrolled"`
 	Active                       bool    `json:"active"`
 	CancelAtPeriodEnd            bool    `json:"cancelAtPeriodEnd"`
-}	
+}
 type SessionIDResponse struct {
 	SessionID  string `"json:id"`
 	PaymentUrl string `json:"url"`
@@ -586,4 +587,19 @@ type CheckoutSession struct {
 	PaymentAmount            string    `json:"paymentAmount"`
 	SubscriptionId           string    `json:"subscription"`
 	PriceId                  string    `json:"priceId"`
+}
+type TransactionDetails struct {
+	Id              string    `json:"userId"`
+	TransactionId   string    `json:"transactionId"`
+	PaymentAmount   string    `json:"paymentAmount"`
+	Plan            string    `json:"plan"`
+	TransactionType string    `json:"transactionType"`
+	TotalPoints     int       `json:"totalPoints"`
+	Currency        string    `json:"currency"`
+	Points          int       `json:"points"`
+	CreatedDate     float64   `json:"createdDate,omitempty"`
+	GoatStatus      string    `json:"goatStatus"`
+	GoatGuid        string    `json:"GoatGuid"`
+	Status          string    `json:"status"`
+	TransactedAt    time.Time `json:"TransactedAt"`
 }
