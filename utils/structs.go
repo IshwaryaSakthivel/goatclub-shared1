@@ -84,18 +84,103 @@ type UserStruct struct {
 	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
 }
 
-type ProfileStruct struct {
-	Username          string  `json:"displayName"`
-	Guid              string  `json:"personGUID,omitempty"`
-	ProfileDP         string  `json:"avatarUrl"`
-	UserStatus        string  `json:"goatStatus"`
+type Profile struct {
+	Guid              string  `json:"guid,omitempty"`
+	Username          string  `json:"username"`
+	AvatarUrl         string  `json:"avatarUrl"`
+	GoatStatusCode    string  `json:"goatStatusCode"`
 	WinningUnits      int     `json:"winningUnits"`
 	FollowersCount    int     `json:"followersCount"`
-	WinningPercentage float64 `json:"winPercentage"`
-	Last30DaysWU      int     `json:"last30DaysPoints"`
+	WinningPercentage float64 `json:"winningPercentage"`
+	Last30DaysWU      int     `json:"last30DaysWU"`
 	Win               int     `json:"win"`
 	Loss              int     `json:"loss"`
 }
+type MyGoatsProfile struct {
+	Guid              string  `json:"guid,omitempty"`
+	Username          string  `json:"username"`
+	AvatarUrl         string  `json:"avatarUrl"`
+	GoatStatusCode    string  `json:"goatStatusCode"`
+	WinningUnits      int     `json:"winningUnits"`
+	FollowersCount    int     `json:"followersCount"`
+	WinningPercentage float64 `json:"winningPercentage"`
+	Last30DaysWU      int     `json:"last30DaysWU"`
+	Win               int     `json:"win"`
+	Loss              int     `json:"loss"`
+	IsExpiringOn      int64   `json:"IsExpiringOn"`
+	IsSubscribed      bool    `json:"isSubscribed"`
+	IsFollowed        bool    `json:"isFollowed"`
+}
+
+type MyChatsProfile struct {
+	Guid              string    `json:"guid,omitempty"`
+	Username          string    `json:"username"`
+	AvatarUrl         string    `json:"avatarUrl"`
+	GoatStatusCode    string    `json:"goatStatusCode"`
+	WinningUnits      int       `json:"winningUnits"`
+	FollowersCount    int       `json:"followersCount"`
+	WinningPercentage float64   `json:"winningPercentage"`
+	Last30DaysWU      int       `json:"last30DaysWU"`
+	Win               int       `json:"win"`
+	Loss              int       `json:"loss"`
+	LastMessageTime   time.Time `json:"lastMessageTime"`
+}
+
+type Persons struct {
+	PersonsGUID string    `json:"personGuid"`
+	CreatedDate time.Time `json:"createdDate"`
+	Persons     []string  `json:"persons"`
+}
+type Guids struct {
+	UserGuid      string   `json:"userGuid"`
+	PickerGuid   string `json:"pickerGuid"`
+}
+type Guid struct {
+	UserGuid   string `json:"userGuid"`
+	PickerGuid string `json:"pickerGuid"`
+	Type       string `json:"type"`
+}
+
+type Following struct {
+	Guid      string   `json:"guid"`
+	Following []string `json:"following"`
+	Username  string   `json:"username"`
+}
+
+type MyFans struct {
+	Guid           string   `json:"guid"`
+	MyFans         []string `json:"myFans"`
+	FollowersCount int      `json:"followersCount"`
+	Username       string   `json:"username"`
+}
+
+type MyGoats struct {
+	Guid      string   `json:"guid"`
+	MyGoats []string `json:"myGoats"`
+}
+
+type Followers struct {
+	Guid string   `json:"guid"`
+	Fans []string `json:"myFans"`
+}
+
+type CheckMyGoat struct {
+ 	IsGoatSubscribed bool `json:"isGoatSubscribed"`
+}
+type response struct {
+	Updated string `json:"updated"`
+}
+
+type Expiry struct {
+	Expiry int64 `json:"expires_at"`
+	CancelAtPeriodEnd bool `json:"cancelAtPeriodEnd"`
+}
+type Goats struct {
+	Guid      string   `json:"guid"`
+	Goats     []string `json:"myGoats"`
+	Following []string `json:"following"`
+}
+
 type ChatStruct struct {
 	MessageParentId string    `json:"messageParentId"`
 	PersonsGUID     string    `json:"personsGUID"`
@@ -210,7 +295,7 @@ type Score struct {
 	Score string `json:"score"`
 }
 type UpdateAvatar struct {
-	ProfileDP string `json:"profileDp"`
+	ProfileAvatarUrl string `json:"profileAvatarUrl"`
 }
 type Game struct {
 	ID           string    `json:"id"`
