@@ -414,7 +414,7 @@ type UserNotificationsActivities struct {
 	Seen           bool      `json:"seen"`
 	SourceGuid     string    `json:"sourceGuid"`
 	CreatedDate    time.Time `json:"createdDate"`
-	SeenDate       time.Time `json:"seenDate"`
+	SeenDate       int64     `json:"seenDate"`
 	SubscriberGuid string    `json:"subscriberGuid"`
 	StackId        string    `json:"stackId"`
 }
