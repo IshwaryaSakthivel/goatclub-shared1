@@ -5,59 +5,13 @@ import (
 	"time"
 )
 
-type PaymentDetails struct {
-	Id string `json:"id,omitempty"`
-	//StripePaymentId              string    `json:"stripePaymentId"`
-	UserId                       string  `json:"userId"`
-	PaymentAmount                string  `json:"paymentAmount"`
-	Plan                         string  `json:"plan"`
-	IsUserFreeTrialExpired       bool    `json:"isFreeTrialExpired"`
-	TransactionType              string  `json:"transactionType"`
-	ProSubscriptionCreated       float64 `json:"proSubscriptionCreated"`
-	ProSubscriptionExpiredOn     float64 `json:"proSubscriptionExpiredOn"`
-	SubscriptionPaymentfrequency string  `json:"paymentFrequency"`
-	//PaymentIntentParams	PaymentIntentParams `json:"paymentIntentParams"`
-	// SubscriptionStatus      string    `json:"subscriptionStatus"`
-	// SubscriptionCancelledOn time.Time `json:"subscriptionCancelledOn"`
-	TotalPoints       int    `json:"totalPoints"`
-	Currency          string `json:"currency"`
-	Points            int    `json:"points"`
-	IsAutoPayEnrolled bool   `json:"isAutoPayEnrolled"`
-}
-
-type PaymentStripe struct {
-	Amount       string   `json:"amount"`
-	Currency     string   `json:"currency"`
-	PaymentType  []string `json:"payment_method_types"`
-	ReceiptEmail string   `json:"receiptEmail"`
-	UserMailId   string   `json:"userMailId"`
-}
-
-type PaymentIntentParams struct {
-	Amount          int64    `json:"amount"`
-	Currency        string   `json:"currency"`
-	CustomerId      string   `json:"customer_id"`
-	PaymentMethodId string   `json:"payment_method_id"`
-	Status          []string `json:"status"`
-	ReceiptEmail    string   `json:"receipt_email"`
-	PaymentIntentId string   `json:"payment_intent_id"`
-	//SetupFutureUsage       string    `json:"setup_future_usage"`
-	AutomaticPaymentMethod string `json:"automatic_payment_method"`
-	// SubscriptionId         string    `json:"subscription_id"`
-	LiveMode    string    `json:"livemode"`
-	EmailId     string    `json:"emailId"`
-	CreatedDate time.Time `json:"createdDate,omitempty"`
-}
-
 type UserStruct struct {
-	Username      string `json:"username"`
-	EmailAddress  string `json:"emailAddress"`
-	Password      string `json:"password"`
-	Guid          string `json:"guid,omitempty"`
-	AccountStatus string `json:"accountStatus"`
-	MobileNumber  string `json:"mobileNumber"`
-	//UserDetails   UserDetailsStruct `json:"userDetails"`
-	//UserDetails     map[string]interface{} `json:"userDetails"`
+	Username                 string    `json:"username"`
+	EmailAddress             string    `json:"emailAddress"`
+	Password                 string    `json:"password"`
+	Guid                     string    `json:"guid,omitempty"`
+	AccountStatus            string    `json:"accountStatus"`
+	MobileNumber             string    `json:"mobileNumber"`
 	SportPreference          []string  `json:"sportPreference"`
 	MyGoats                  []string  `json:"myGoats"`
 	MyFans                   []string  `json:"myFans"`
@@ -81,6 +35,8 @@ type UserStruct struct {
 	ProSubscriptionExpiredOn int64     `json:"proSubscriptionExpiredOn"`
 	IsFreeTrialExpired       bool      `json:"isFreeTrialExpired"`
 	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
+	// UserDetails   UserDetailsStruct `json:"userDetails"`
+	// UserDetails     map[string]interface{} `json:"userDetails"`
 }
 
 type Profile struct {
@@ -134,24 +90,6 @@ type Guids struct {
 	UserGuid   string `json:"userGuid"`
 	PickerGuid string `json:"pickerGuid"`
 }
-type Guid struct {
-	UserGuid   string `json:"userGuid"`
-	PickerGuid string `json:"pickerGuid"`
-	Type       string `json:"type"`
-}
-
-type Following struct {
-	Guid      string   `json:"guid"`
-	Following []string `json:"following"`
-	Username  string   `json:"username"`
-}
-
-type MyFans struct {
-	Guid           string   `json:"guid"`
-	MyFans         []string `json:"myFans"`
-	FollowersCount int      `json:"followersCount"`
-	Username       string   `json:"username"`
-}
 
 type MyGoats struct {
 	Guid    string   `json:"guid"`
@@ -169,11 +107,18 @@ type CheckMyGoat struct {
 type Updated struct {
 	Updated string `json:"updated"`
 }
-
+type Response struct {
+	Updated bool `json:"updated"`
+}
 type Expiry struct {
 	Expiry            int64 `json:"expires_at"`
 	IsAutoPayEnrolled bool  `json:"isAutoPayEnrolled"`
 	CancelAtPeriodEnd bool  `json:"cancelAtPeriodEnd"`
+}
+type ExpiryInfo struct {
+	Guid  string `json:"guid"`
+	Type  string `json:"type"`
+	Email string `json:"email"`
 }
 type Goats struct {
 	Guid      string   `json:"guid"`
@@ -262,12 +207,6 @@ type PaymentDetailsApi struct {
 	// PaymentMethodOptions      *PaymentIntentPaymentMethodOptionsParams `json:"payment_method_options"`
 
 }
-
-//	 type PaymentIntentPaymentMethodOptionsCardInstallments struct {
-//	    // AvailablePlans []*PaymentIntentPaymentMethodOptionsCardInstallmentsPlan `json:"available_plans"`
-//	    Enabled        bool                                                     `json:"enabled"`
-//	    // Plan           *PaymentIntentPaymentMethodOptionsCardInstallmentsPlan   `json:"plan"`
-//	}
 type AwsPickItem struct {
 	EventId          string `json:"eventId.S"`
 	OddDataMoneyLine int    `json:"oddDataMoneyLine.N"`
@@ -423,6 +362,13 @@ type Websocket struct {
 }
 
 // Payment
+type PaymentStripe struct {
+	Amount       string   `json:"amount"`
+	Currency     string   `json:"currency"`
+	PaymentType  []string `json:"payment_method_types"`
+	ReceiptEmail string   `json:"receiptEmail"`
+	UserMailId   string   `json:"userMailId"`
+}
 type ProductStruct struct {
 	ProductId   string  `json:"id"`
 	CreatedDate float64 `json:"created"`
@@ -445,10 +391,6 @@ type PriceStruct struct {
 	Type        string  `json:"type"`
 }
 
-type Response struct {
-	Message string `json:"message"`
-}
-
 type ProCancelSubscription struct {
 	UserId       string `json:"userId"`
 	Customer     string `json:"customer"`
@@ -467,7 +409,7 @@ type CardDetails struct {
 	CardId     string `json:"cardId"`
 	CustomerId string `json:"customerId"`
 }
-type InsertCardDetails struct {
+type CardDetailsInfo struct {
 	UserId      string `json:"userId"`
 	UserEmail   string `json:"userEmail"`
 	CardId      string `json:"cardId"`
@@ -481,17 +423,6 @@ type InsertCardDetails struct {
 type ErrorMessage struct {
 	Message string `json:"message"`
 	Error   error  `json:"error"`
-}
-type UpdateCardDetails struct {
-	UserId      string `json:"userId"`
-	UserEmail   string `json:"userEmail"`
-	CardId      string `json:"cardId"`
-	CardNumber  string `json:"cardNumber"`
-	ExpiryYear  string `json:"expiryYear"`
-	Cvc         string `json:"cvc"`
-	ExpiryMonth string `json:"expiryMonth"`
-	CustomerId  string `json:"customerId"`
-	Name        string `json:"name"`
 }
 type ProMappingStruct struct {
 	CustomerId string `json:"customerId"`
@@ -603,4 +534,52 @@ type TransactionDetails struct {
 	GoatGuid        string    `json:"GoatGuid"`
 	Status          string    `json:"status"`
 	TransactedAt    time.Time `json:"TransactedAt"`
+}
+
+type PaymentIntentFailureParams struct {
+	ID              string  `json:"id"`
+	Currency        string  `json:"currency"`
+	CustomerId      string  `json:"customer"`
+	PaymentMethodId string  `json:"payment_method"`
+	Amount          string  `json:"amount"`
+	Status          string  `json:"status"`
+	ReceiptEmail    string  `json:"receipt_email"`
+	SubscriptionId  string  `json:"subscription"`
+	LiveMode        bool    `json:"livemode"`
+	CreatedDate     float64 `json:"createdDate,omitempty"`
+	UserId          string  `json:"userId"`
+	Code            string  `json:"code"`
+	DeclineCode     string  `json:"decline_code"`
+	Message         string  `json:"message"`
+}
+type PaymentIntentParams struct {
+	ID string `json:"id"`
+	// PaymentId    string  `json:"paymentId"`
+	Amount          float64 `json:"amount"`
+	Currency        string  `json:"currency"`
+	CustomerId      string  `json:"customer"`
+	PaymentMethodId string  `json:"payment_method_id"`
+	Status          string  `json:"status"`
+	ReceiptEmail    string  `json:"receipt_email"`
+	LiveMode        bool    `json:"livemode"`
+	CreatedDate     float64 `json:"created,omitempty"`
+	UserId          string  `json:"userId"`
+}
+type GoatsDetail struct {
+	Guid                     string   `json:"guid"`
+	MyFans                   []string `json:"myFans"`
+	FollowersCount           int      `json:"followersCount"`
+	Username                 string   `json:"username"`
+	EmailAddress             string   `json:"emailAddress"`
+	IsEmailNotificationOpted bool     `json:"isEmailNotificationOpted"`
+	// MyGoats []string `json:"myGoats"`
+}
+type User struct {
+	Guid                     string   `json:"guid"`
+	MyGoats                  []string `json:"myGoats"`
+	MyFans                   []string `json:"myFans"`
+	Username                 string   `json:"username"`
+	Following                []string `json:"following"`
+	EmailAddress             string   `json:"emailAddress"`
+	IsEmailNotificationOpted bool     `json:"isEmailNotificationOpted"`
 }
