@@ -37,6 +37,11 @@ type UserStruct struct {
 	FreeTrialExpireOn        time.Time `json:"freeTrialExpireOn"`
 	// UserDetails   UserDetailsStruct `json:"userDetails"`
 	// UserDetails     map[string]interface{} `json:"userDetails"`
+	InAppEntitlementID    string `json:"inAppEntitlementID"`
+	InAppOfferingIdentifier string `json:"inAppOfferingIdentifier"`
+	Description string `json:"description"`
+	SubscriptionPaymentMode     string    `json:"subscriptionPaymentMode"`
+	GoatSubscriptionMode  []string  `json:"goatSubscriptionMode"`
 }
 
 type Profile struct {
@@ -50,6 +55,10 @@ type Profile struct {
 	Last30DaysWU      int     `json:"last30DaysWU"`
 	Win               int     `json:"win"`
 	Loss              int     `json:"loss"`
+	InAppEntitlementID    string `json:"inAppEntitlementID"`
+	InAppOfferingIdentifier string `json:"inAppOfferingIdentifier"`
+	Description string `json:"description"`
+	GoatSubscriptionMode  []string  `json:"goatSubscriptionMode"`
 }
 type MyGoatsProfile struct {
 	Guid              string  `json:"guid,omitempty"`
@@ -582,4 +591,30 @@ type User struct {
 	Following                []string `json:"following"`
 	EmailAddress             string   `json:"emailAddress"`
 	IsEmailNotificationOpted bool     `json:"isEmailNotificationOpted"`
+}
+type EventData struct {
+	APIVersion string `json:"api_version"`
+	Event      Eventrc  `json:"event"`
+}
+
+type Eventrc struct {
+	Email                 string                         `json:"email"`
+	UserId                string                         `json:"user_id"`
+	AppuserId             string                         `json:"app_user_id"`
+	ProductId             string                         `json:"product_id"`
+	EventType             string                         `json:"type"`
+	SubscriberAttributes  map[string]SubscriberAttribute `json:"subscriber_attributes"`
+	Price                 float64                        `json:"price_in_purchased_currency"`
+	Purchased_at_ms       float64                        `json:"purchased_at_ms"`
+	Expires_at            float64                        `json:"expiration_at_ms"`
+	Transaction_id        string                         `json:"transaction_id"`
+	OriginalTransactionID string                         `json:"original_transaction_id"`
+	Currency              string                         `json:"currency"`
+	CancelReason          string                         `json:"cancel_reason"`
+	Environment           string                         `json:"environment"`
+}
+
+type SubscriberAttribute struct {
+	UpdatedAtMS int64  `json:"updated_at_ms"`
+	Value       string `json:"value"`
 }
