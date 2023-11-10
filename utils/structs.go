@@ -146,8 +146,8 @@ type ChatStruct struct {
 	AvatarUrl       string    `json:"avatarUrl"`
 	RankLevelCode   string    `json:"rankLevelCode"`
 	TimeStamp       time.Time `json:"timeStamp"`
-	LikesCount      string    `json:"likesCount"`
-	CommentsCount   string    `json:"commentsCount"`
+	LikesCount      int  	  `json:"likesCount"`
+	CommentsCount   int  	  `json:"commentsCount"`
 	UpdateMode      string    `json:"updateMode"`
 	ReceiverGUID    string    `json:"receiverGUID"`
 	SenderGUID      string    `json:"senderGUID"`
