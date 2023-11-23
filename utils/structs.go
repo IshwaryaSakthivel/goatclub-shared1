@@ -42,7 +42,18 @@ type UserStruct struct {
 	Description string `json:"description"`
 	SubscriptionPaymentMode     string    `json:"subscriptionPaymentMode"`
 	GoatSubscriptionMode  []string  `json:"goatSubscriptionMode"`
+	IsPromoUser             bool     `json:"isPromoUser"`
+	PromoCode               string   `json:"promoCode"`
 }
+
+
+type PromoCodeUser struct {
+	Guid        string `json:"guid"`
+	Email       string `json:"email"`
+	IsPromoUser bool   `json:"isPromoUser"`
+	PromoCode   string `json:"promoCode"`
+}
+
 
 type Profile struct {
 	Guid              string  `json:"guid,omitempty"`
