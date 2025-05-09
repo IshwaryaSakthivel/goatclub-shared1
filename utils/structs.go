@@ -206,7 +206,7 @@ type Picks struct {
 	TeamName         string `json:"teamName"`
 	OppTeamName      string `json:"oppTeamName"`
 	Sport            string `json:"sport"`
-	OddDataMoneyLine int    `json:"oddDataMoneyLine"`
+	OddDataMoneyLine float64    `json:"oddDataMoneyLine"`
 }
 type AwsPick struct {
 	GameStatus      bool          `json:"gamestatus.NULL"`
