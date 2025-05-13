@@ -194,7 +194,7 @@ type PickStruct struct {
 type PickDetails struct {
 	Picks           []Picks   `json:"picks"`
 	OddDataUnits    float64   `json:"oddDataUnits"`
-	OddDataWins     float64   `json:"oddDataWins"`
+	OddDataWins     int   	  `json:"oddDataWins"`
 	PickId          string    `json:"pickId"`
 	Gamestatus      []string  `json:"gamestatus"`
 	PickStatus      string    `json:"pickStatus"`
