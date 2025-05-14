@@ -201,6 +201,13 @@ type PickDetails struct {
 	Picktype        string    `json:"picktype"`
 	PickCreatedDate time.Time `json:"pickCreatedDate,omitempty"`
 }
+
+type OverideUser struct {
+    UserId      string `json:"userId"`
+    CreatedDate string `json:"createdDate"`
+    GoatStatus  string `json:"goatStatus"`
+}
+
 type Picks struct {
 	EventId          string `json:"eventId"`
 	TeamName         string `json:"teamName"`
