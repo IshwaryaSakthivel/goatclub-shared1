@@ -342,6 +342,7 @@ type StaticData struct {
 type Outcome struct {
 	Name  string  `json:"name"`
 	Price float64 `json:"price"`
+	Point *float64 `json:"point,omitempty"`
 }
 
 type Market struct {
